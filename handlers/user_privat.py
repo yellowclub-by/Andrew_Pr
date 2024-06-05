@@ -7,13 +7,17 @@ user_router = Router()
 
 @user_router.message(CommandStart())
 async def start(message: types.Message):
-    await message.answer('Привет, это бот clothes_shop_MInsk', reply_markup=reply.start_kb)
+    text = '''<strong>Добро пожаловать в наш магазин одежды</strong>😁!\n 
+Здесь вы найдете базовые вещи высокого качества, которые подчеркнут вашу индивидуальность. 
+Мы предлагаем современный дизайн и комфорт по доступным ценам💸.\n
+Откройте для себя новые возможности в мире моды вместе с нами👐!'''
+    await message.answer(text, reply_markup=reply.start_kb)
 
 
 @user_router.message(F.text.lower() == "каталог")
 @user_router.message(Command('catalog'))
 async def catalog(message: types.Message):
-    await message.answer('Наш каталог ', reply_markup=reply.catalog_kb)
+    await message.answer('Наш каталог📃', reply_markup=reply.catalog_kb)
 
 
 @user_router.message(F.text.lower() == 'про нас')

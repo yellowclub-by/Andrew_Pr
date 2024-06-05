@@ -7,6 +7,7 @@ restricted_words = ['козьел', 'персик', 'шоколад', 'фурр�
 
 @group_router.message(F.text)
 async def cleaner(message: types.Message):
+    print(message.text)
     words_lst = message.text.split(" ")
     for word in words_lst:
         if word.lower() in restricted_words:

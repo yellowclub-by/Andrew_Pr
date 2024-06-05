@@ -1,9 +1,9 @@
 import asyncio
-from aiogram import Bot, Dispatcher
+from aiogram import Bot, Dispatcher, types
 
 TOKEN = "7127422770:AAGqCQ1JjxdF4Td36Oj1WyDodUoE7UfmrIE"
 
-bot = Bot(token=TOKEN)
+bot = Bot(token=TOKEN, parse_mode='HTML')
 dp = Dispatcher()
 
 from handlers.user_privat import user_router
