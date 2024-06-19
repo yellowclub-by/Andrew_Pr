@@ -11,3 +11,13 @@ def adresses_kb():
         width=1
     )
     return builder.as_markup()
+
+
+links_kb = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+          InlineKeyboardButton(text='Сайт', url='https://www.lamoda.by/'),
+        InlineKeyboardButton(text='Телеграмм', url='tg://resolve?domain=dlstudiostore')
+        ]
+    ]
+)

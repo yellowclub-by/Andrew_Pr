@@ -23,19 +23,30 @@ async def catalog(message: types.Message):
 @user_router.message(F.text.lower() == 'про нас')
 @user_router.message(Command('about'))
 async def about(message: types.Message):
-    await message.answer('Про нас ')
+    text = '''Добро пожаловать в clothes_shop_Minsk😁!\n 
+Мы предлагаем стильную и качественную одежду для мужчин и женщин, тщательно отобранную нашей командой.
+Наша миссия — сделать моду доступной и удобной для всех.
+Мы гарантируем высокое качество, доступные цены и быструю доставку.\n
+Присоединяйтесь к нам и наслаждайтесь незабываемым шопингом🛍️!'''
+    await message.answer(text, reply_markup=inline.links_kb)
 
 
 @user_router.message(F.text.lower() == 'контакты')
 @user_router.message(Command('contacts'))
 async def contacts(message: types.Message):
-    await message.answer('Наши контакты ')
+    text = '''Свяжитесь с нами по телефону +375 29 345 6777
+или напишите на наш адрес электронной почты - clothesminsk@gmail.com.\n
+Также можете связаться с нашим менеджером - @andrey_scorp.\n
+Мы всегда рады ответить на ваши вопросы и помочь с выбором!'''
+    await message.answer(text)
 
 
 @user_router.message(F.text.lower() == 'филиалы')
 @user_router.message(Command('addresses'))
 async def addresses(message: types.Message):
     await message.answer('Наши филиалы ', reply_markup=inline.adresses_kb())
+
+
 @user_router.callback_query(F.data.lower().startswith('adresses'))
 async def adresses_types(callback: types.CallbackQuery):
     query = callback.data.split('_')[1]
