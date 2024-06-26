@@ -5,13 +5,13 @@ back_btn = KeyboardButton(text='Назад')
 start_kb = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text='Каталог'),
-            KeyboardButton(text='Про нас'),
+            KeyboardButton(text='Каталог🛍️'),
+            KeyboardButton(text='Про нас❤️'),
         ],
 
         [
-            KeyboardButton(text='Контакты'),
-            KeyboardButton(text='Филиалы')
+            KeyboardButton(text='Контакты📞'),
+            KeyboardButton(text='Филиалы🏢')
         ]
     ],
     resize_keyboard=True,

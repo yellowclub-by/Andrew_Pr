@@ -1,5 +1,7 @@
 from aiogram.filters import CommandStart, Command
 from aiogram import types, Router, F
+from aiogram.types import FSInputFile
+
 from keyboards import reply, inline
 
 user_router = Router()
@@ -14,13 +16,13 @@ async def start(message: types.Message):
     await message.answer(text, reply_markup=reply.start_kb)
 
 
-@user_router.message(F.text.lower() == "каталог")
+@user_router.message(F.text.lower() == "каталог🛍️")
 @user_router.message(Command('catalog'))
 async def catalog(message: types.Message):
     await message.answer('Наш каталог📃', reply_markup=reply.catalog_kb)
 
 
-@user_router.message(F.text.lower() == 'про нас')
+@user_router.message(F.text.lower() == 'про нас❤️')
 @user_router.message(Command('about'))
 async def about(message: types.Message):
     text = '''Добро пожаловать в clothes_shop_Minsk😁!\n 
@@ -31,7 +33,7 @@ async def about(message: types.Message):
     await message.answer(text, reply_markup=inline.links_kb)
 
 
-@user_router.message(F.text.lower() == 'контакты')
+@user_router.message(F.text.lower() == 'контакты📞')
 @user_router.message(Command('contacts'))
 async def contacts(message: types.Message):
     text = '''Свяжитесь с нами по телефону +375 29 345 6777
@@ -41,7 +43,7 @@ async def contacts(message: types.Message):
     await message.answer(text)
 
 
-@user_router.message(F.text.lower() == 'филиалы')
+@user_router.message(F.text.lower() == 'филиалы🏢')
 @user_router.message(Command('addresses'))
 async def addresses(message: types.Message):
     await message.answer('Наши филиалы ', reply_markup=inline.adresses_kb())
@@ -51,11 +53,12 @@ async def addresses(message: types.Message):
 async def adresses_types(callback: types.CallbackQuery):
     query = callback.data.split('_')[1]
     if query == '1':
-        await callback.message.answer('Пункт выдачи 1')
+        photo = FSInputFile(r'img\adresses\first.png')
+        await callback.message.answer_photo(photo, caption='Минск, ул.Богдановича 13')
     elif query == '2':
-        await callback.message.answer('Пункт выдачи 2')
-    elif query == '3' :
-        await callback.message.answer('Пункт выдачи 3')
+        photo = FSInputFile(r'img\adresses\second.png')
+        await callback.message.answer_photo(photo, caption='Минск, ул. Собинова 46')
+
     await callback.answer()
 
 
